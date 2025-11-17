@@ -1,0 +1,11 @@
+{
+  "name": "LS_Databricks_Orion",
+  "properties": {
+    "annotations": [],
+    "type": "Databricks",
+    "typeProperties": {
+      "host": "https://<region>.azuredatabricks.net",
+      "token": "DATABRICKS_TOKEN_PLACEHOLDER"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "LS_KeyVault_Orion",
+  "properties": {
+    "annotations": [],
+    "type": "AzureKeyVault",
+    "typeProperties": {
+      "baseUrl": "https://<your-keyvault-name>.vault.azure.net/"
+    }
+  }
+}

@@ -1,8 +1,8 @@
 {
   "name": "LS_SQL_OrionDB",
   "properties": {
+    "annotations": [],
     "type": "AzureSqlDatabase",
-    "properties": {},
     "typeProperties": {
       "connectionString": "Server=tcp:orion-sql-db-server.database.windows.net,1433;Database=Orion_SQL_DB;User ID=sqladmin;Password=Sai@Trinet6089;Encrypt=True;Connection Timeout=30;"
     }
