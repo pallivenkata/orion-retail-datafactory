@@ -1,0 +1,13 @@
+{
+  "name": "DS_SQL_Stg_Sales",
+  "properties": {
+    "linkedServiceName": {
+      "referenceName": "LS_SQL_OrionDB",
+      "type": "LinkedServiceReference"
+    },
+    "type": "AzureSqlTable",
+    "typeProperties": {
+      "tableName": "dbo.Stg_Sales"
+    }
+  }
+}

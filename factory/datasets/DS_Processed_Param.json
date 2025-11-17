@@ -1,0 +1,29 @@
+{
+  "name": "DS_Processed_Param",
+  "properties": {
+    "linkedServiceName": {
+      "referenceName": "LS_Blob_Orion",
+      "type": "LinkedServiceReference"
+    },
+    "parameters": {
+      "subfolder": {
+        "type": "String"
+      },
+      "datefolder": {
+        "type": "String"
+      },
+      "filename": {
+        "type": "String"
+      }
+    },
+    "type": "Binary",
+    "typeProperties": {
+      "location": {
+        "type": "AzureBlobStorageLocation",
+        "fileName": "@dataset().filename",
+        "folderPath": "@concat(dataset().subfolder, '/', dataset().datefolder, '/')",
+        "container": "processed"
+      }
+    }
+  }
+}

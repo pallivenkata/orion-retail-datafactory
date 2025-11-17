@@ -1,0 +1,9 @@
+{
+  "name": "LS_Blob_Orion",
+  "properties": {
+    "type": "AzureBlobStorage",
+    "typeProperties": {
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=storionretail360dev;AccountKey=YOUR_STORAGE_KEY;EndpointSuffix=core.windows.net"
+    }
+  }
+}
