@@ -1,0 +1,9 @@
+{
+  "name": "adf-orion-retail360-dev",
+  "properties": {
+    "hubName": "orion-retail-hub",
+    "globalParameters": {},
+    "provisioningState": "Succeeded"
+  },
+  "location": "eastus"
+}
