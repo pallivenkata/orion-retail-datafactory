@@ -2,27 +2,10 @@
   "name": "PL_Day09_Skeleton",
   "properties": {
     "annotations": [],
-    "parameters": {
-      "date_folder": {
-        "type": "string",
-        "defaultValue": "@formatDateTime(utcNow(),'yyyy-MM-dd')"
-      },
-      "source_root": {
-        "type": "string",
-        "defaultValue": "processed"
-      }
-    },
+    "parameters": {},
     "variables": {},
-    "activities": [
-      {
-        "name": "Start_Activity",
-        "type": "Wait",
-        "typeProperties": {
-          "waitTimeInSeconds": 1
-        }
-      }
-    ],
-    "lastPublishTime": "2025-11-17T12:56:21.701101Z"
+    "activities": [],
+    "lastPublishTime": "2025-11-17T16:17:41.129311Z"
   },
-  "type": "Microsoft.DataFactory/factories/pipelines"
+  "type": "Microsoft.DataFactory/factories/pipelines/pipeline"
 }

@@ -1,0 +1,236 @@
+{
+  "name": "PL_Day04_Recursive_ProcessedToStaging",
+  "properties": {
+    "annotations": [],
+    "parameters": {
+      "date_folder": {
+        "type": "string",
+        "defaultValue": "@formatDateTime(utcNow(),'yyyy-MM-dd')"
+      }
+    },
+    "variables": {},
+    "activities": [
+      {
+        "name": "GetMetadata_Folders",
+        "type": "GetMetadata",
+        "typeProperties": {
+          "dataset": {
+            "referenceName": "DS_Processed_Param",
+            "type": "DatasetReference",
+            "parameters": {
+              "subfolder": {
+                "value": "",
+                "type": "Expression"
+              },
+              "datefolder": {
+                "value": "",
+                "type": "Expression"
+              },
+              "filename": {
+                "value": "",
+                "type": "Expression"
+              }
+            }
+          },
+          "fieldList": [
+            "childItems"
+          ]
+        }
+      },
+      {
+        "name": "ForEach_Folders",
+        "type": "ForEach",
+        "dependsOn": [
+          {
+            "activity": "GetMetadata_Folders",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "typeProperties": {
+          "items": {
+            "value": "@activity('GetMetadata_Folders').output.childItems",
+            "type": "Expression"
+          },
+          "isSequential": true,
+          "activities": [
+            {
+              "name": "Set_CurrentFolder",
+              "type": "SetVariable",
+              "typeProperties": {
+                "variableName": "v_currentFolder",
+                "value": {
+                  "value": "@item().name",
+                  "type": "Expression"
+                }
+              }
+            },
+            {
+              "name": "GetMetadata_Files",
+              "type": "GetMetadata",
+              "typeProperties": {
+                "dataset": {
+                  "referenceName": "DS_Processed_Param",
+                  "type": "DatasetReference",
+                  "parameters": {
+                    "subfolder": {
+                      "value": "@variables('v_currentFolder')",
+                      "type": "Expression"
+                    },
+                    "datefolder": {
+                      "value": "@pipeline().parameters.date_folder",
+                      "type": "Expression"
+                    },
+                    "filename": {
+                      "value": ""
+                    }
+                  }
+                },
+                "fieldList": [
+                  "childItems"
+                ]
+              }
+            },
+            {
+              "name": "ForEach_Files",
+              "type": "ForEach",
+              "dependsOn": [
+                {
+                  "activity": "GetMetadata_Files",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ],
+              "typeProperties": {
+                "items": {
+                  "value": "@activity('GetMetadata_Files').output.childItems",
+                  "type": "Expression"
+                },
+                "isSequential": true,
+                "activities": [
+                  {
+                    "name": "Switch_FileType",
+                    "type": "Switch",
+                    "typeProperties": {
+                      "on": {
+                        "value": "@toLower(last(split(item().name,'.')))"
+                      }
+                    },
+                    "cases": [
+                      {
+                        "value": "csv",
+                        "activities": [
+                          {
+                            "name": "Copy_CSV_To_Stg",
+                            "type": "Copy",
+                            "inputs": [
+                              {
+                                "referenceName": "DS_Processed_Param",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                  "subfolder": {
+                                    "value": "@variables('v_currentFolder')",
+                                    "type": "Expression"
+                                  },
+                                  "datefolder": {
+                                    "value": "@pipeline().parameters.date_folder",
+                                    "type": "Expression"
+                                  },
+                                  "filename": {
+                                    "value": "@item().name",
+                                    "type": "Expression"
+                                  }
+                                }
+                              }
+                            ],
+                            "outputs": [
+                              {
+                                "referenceName": "DS_SQL_Stg_Sales",
+                                "type": "DatasetReference"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "value": "json",
+                        "activities": [
+                          {
+                            "name": "Copy_JSON_To_Stg",
+                            "type": "Copy",
+                            "inputs": [
+                              {
+                                "referenceName": "DS_Processed_Param",
+                                "type": "DatasetReference",
+                                "parameters": {
+                                  "subfolder": {
+                                    "value": "@variables('v_currentFolder')",
+                                    "type": "Expression"
+                                  },
+                                  "datefolder": {
+                                    "value": "@pipeline().parameters.date_folder",
+                                    "type": "Expression"
+                                  },
+                                  "filename": {
+                                    "value": "@item().name",
+                                    "type": "Expression"
+                                  }
+                                }
+                              }
+                            ],
+                            "outputs": [
+                              {
+                                "referenceName": "DS_SQL_Stg_Customers",
+                                "type": "DatasetReference"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "defaultActivities": [
+                      {
+                        "name": "Copy_Other_To_Stg",
+                        "type": "Copy",
+                        "inputs": [
+                          {
+                            "referenceName": "DS_Processed_Param",
+                            "type": "DatasetReference",
+                            "parameters": {
+                              "subfolder": {
+                                "value": "@variables('v_currentFolder')",
+                                "type": "Expression"
+                              },
+                              "datefolder": {
+                                "value": "@pipeline().parameters.date_folder",
+                                "type": "Expression"
+                              },
+                              "filename": {
+                                "value": "@item().name",
+                                "type": "Expression"
+                              }
+                            }
+                          }
+                        ],
+                        "outputs": [
+                          {
+                            "referenceName": "DS_SQL_Stg_Products",
+                            "type": "DatasetReference"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "lastPublishTime": "2025-11-17T16:17:41.129311Z"
+  },
+  "type": "Microsoft.DataFactory/factories/pipelines/pipeline"
+}

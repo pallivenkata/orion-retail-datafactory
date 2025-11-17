@@ -1,0 +1,24 @@
+{
+  "name": "PL_Incremental_Watermark",
+  "properties": {
+    "annotations": [],
+    "parameters": {},
+    "variables": {},
+    "activities": [
+      {
+        "name": "Lookup_Watermark",
+        "type": "Lookup"
+      },
+      {
+        "name": "Copy_Incremental",
+        "type": "Copy"
+      },
+      {
+        "name": "Update_Watermark",
+        "type": "StoredProcedure"
+      }
+    ],
+    "lastPublishTime": "2025-11-17T16:17:41.129311Z"
+  },
+  "type": "Microsoft.DataFactory/factories/pipelines/pipeline"
+}

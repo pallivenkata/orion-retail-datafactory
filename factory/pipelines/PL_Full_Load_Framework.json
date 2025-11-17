@@ -1,0 +1,20 @@
+{
+  "name": "PL_Full_Load_Framework",
+  "properties": {
+    "annotations": [],
+    "parameters": {},
+    "variables": {},
+    "activities": [
+      {
+        "name": "Truncate_Target",
+        "type": "SqlServerStoredProcedure"
+      },
+      {
+        "name": "Copy_Full",
+        "type": "Copy"
+      }
+    ],
+    "lastPublishTime": "2025-11-17T16:17:41.129311Z"
+  },
+  "type": "Microsoft.DataFactory/factories/pipelines/pipeline"
+}

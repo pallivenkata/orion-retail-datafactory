@@ -1,0 +1,19 @@
+{
+  "name": "PL_SCD2_Upsert",
+  "properties": {
+    "annotations": [],
+    "parameters": {},
+    "variables": {},
+    "activities": [
+      {
+        "name": "Notebook_SCD2_Merge",
+        "type": "DatabricksNotebook",
+        "typeProperties": {
+          "notebookPath": "/Repos/Orion/Notebooks/scd2_merge"
+        }
+      }
+    ],
+    "lastPublishTime": "2025-11-17T16:17:41.129311Z"
+  },
+  "type": "Microsoft.DataFactory/factories/pipelines/pipeline"
+}

@@ -1,0 +1,55 @@
+{
+  "name": "PL_Day01_Ingest_Raw",
+  "properties": {
+    "annotations": [],
+    "parameters": {
+      "date_folder": {
+        "type": "string",
+        "defaultValue": "@formatDateTime(utcNow(),'yyyy-MM-dd')"
+      }
+    },
+    "variables": {},
+    "activities": [
+      {
+        "name": "Copy_Raw_To_Processed",
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "BinarySource"
+          },
+          "sink": {
+            "type": "BinarySink"
+          },
+          "enableStaging": false
+        },
+        "inputs": [
+          {
+            "referenceName": "DS_Raw_CSV",
+            "type": "DatasetReference"
+          }
+        ],
+        "outputs": [
+          {
+            "referenceName": "DS_Processed_Param",
+            "type": "DatasetReference",
+            "parameters": {
+              "subfolder": {
+                "value": "csv",
+                "type": "Expression"
+              },
+              "datefolder": {
+                "value": "@pipeline().parameters.date_folder",
+                "type": "Expression"
+              },
+              "filename": {
+                "value": ""
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "lastPublishTime": "2025-11-17T16:17:41.129311Z"
+  },
+  "type": "Microsoft.DataFactory/factories/pipelines/pipeline"
+}

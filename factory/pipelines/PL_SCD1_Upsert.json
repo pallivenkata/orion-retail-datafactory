@@ -1,0 +1,19 @@
+{
+  "name": "PL_SCD1_Upsert",
+  "properties": {
+    "annotations": [],
+    "parameters": {},
+    "variables": {},
+    "activities": [
+      {
+        "name": "SP_SCD1_Merge",
+        "type": "SqlServerStoredProcedure",
+        "typeProperties": {
+          "storedProcedureName": "dbo.usp_SCD1_Merge"
+        }
+      }
+    ],
+    "lastPublishTime": "2025-11-17T16:17:41.129311Z"
+  },
+  "type": "Microsoft.DataFactory/factories/pipelines/pipeline"
+}

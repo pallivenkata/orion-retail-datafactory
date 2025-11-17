@@ -1,0 +1,20 @@
+{
+  "name": "PL_Build_Curated_Layer",
+  "properties": {
+    "annotations": [],
+    "parameters": {},
+    "variables": {},
+    "activities": [
+      {
+        "name": "Transform_In_Databricks",
+        "type": "DatabricksNotebook"
+      },
+      {
+        "name": "Load_To_Curated",
+        "type": "Copy"
+      }
+    ],
+    "lastPublishTime": "2025-11-17T16:17:41.129311Z"
+  },
+  "type": "Microsoft.DataFactory/factories/pipelines/pipeline"
+}

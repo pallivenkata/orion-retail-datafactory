@@ -1,10 +1,15 @@
 {
-  "name": "PL_Day07_Skeleton",
+  "name": "PL_DeltaLake_Merge",
   "properties": {
     "annotations": [],
     "parameters": {},
     "variables": {},
-    "activities": [],
+    "activities": [
+      {
+        "name": "Run_Databricks_Merge",
+        "type": "DatabricksNotebook"
+      }
+    ],
     "lastPublishTime": "2025-11-17T16:17:41.129311Z"
   },
   "type": "Microsoft.DataFactory/factories/pipelines/pipeline"
