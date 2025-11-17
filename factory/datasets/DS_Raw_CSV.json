@@ -1,0 +1,20 @@
+{
+  "name": "DS_Raw_CSV",
+  "properties": {
+    "annotations": [],
+    "type": "DelimitedText",
+    "typeProperties": {
+      "linkedServiceName": {
+        "referenceName": "LS_Blob_Orion",
+        "type": "LinkedServiceReference"
+      },
+      "typeProperties": {
+        "location": {
+          "type": "AzureBlobStorageLocation",
+          "container": "raw",
+          "folderPath": "csv/"
+        }
+      }
+    }
+  }
+}

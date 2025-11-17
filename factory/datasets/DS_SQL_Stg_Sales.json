@@ -1,13 +1,14 @@
 {
   "name": "DS_SQL_Stg_Sales",
   "properties": {
-    "linkedServiceName": {
-      "referenceName": "LS_SQL_OrionDB",
-      "type": "LinkedServiceReference"
-    },
+    "annotations": [],
     "type": "AzureSqlTable",
     "typeProperties": {
-      "tableName": "dbo.Stg_Sales"
+      "tableName": "dbo.Stg_Sales",
+      "linkedServiceName": {
+        "referenceName": "LS_SQL_OrionDB",
+        "type": "LinkedServiceReference"
+      }
     }
   }
 }

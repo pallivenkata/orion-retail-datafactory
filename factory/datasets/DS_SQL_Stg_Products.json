@@ -1,13 +1,14 @@
 {
   "name": "DS_SQL_Stg_Products",
   "properties": {
-    "linkedServiceName": {
-      "referenceName": "LS_SQL_OrionDB",
-      "type": "LinkedServiceReference"
-    },
+    "annotations": [],
     "type": "AzureSqlTable",
     "typeProperties": {
-      "tableName": "dbo.Stg_Products"
+      "tableName": "dbo.Stg_Products",
+      "linkedServiceName": {
+        "referenceName": "LS_SQL_OrionDB",
+        "type": "LinkedServiceReference"
+      }
     }
   }
 }

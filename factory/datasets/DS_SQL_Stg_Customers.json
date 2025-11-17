@@ -1,13 +1,14 @@
 {
   "name": "DS_SQL_Stg_Customers",
   "properties": {
-    "linkedServiceName": {
-      "referenceName": "LS_SQL_OrionDB",
-      "type": "LinkedServiceReference"
-    },
+    "annotations": [],
     "type": "AzureSqlTable",
     "typeProperties": {
-      "tableName": "dbo.Stg_CustomersJson"
+      "tableName": "dbo.Stg_CustomersJson",
+      "linkedServiceName": {
+        "referenceName": "LS_SQL_OrionDB",
+        "type": "LinkedServiceReference"
+      }
     }
   }
 }

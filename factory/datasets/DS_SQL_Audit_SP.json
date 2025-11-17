@@ -1,13 +1,14 @@
 {
   "name": "DS_SQL_Audit_SP",
   "properties": {
-    "linkedServiceName": {
-      "referenceName": "LS_SQL_OrionDB",
-      "type": "LinkedServiceReference"
-    },
+    "annotations": [],
     "type": "AzureSqlStoredProcedure",
     "typeProperties": {
-      "storedProcedureName": "dbo.usp_InsertIngestAudit"
+      "storedProcedureName": "dbo.usp_InsertIngestAudit",
+      "linkedServiceName": {
+        "referenceName": "LS_SQL_OrionDB",
+        "type": "LinkedServiceReference"
+      }
     }
   }
 }
