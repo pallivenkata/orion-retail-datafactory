@@ -1,1 +1,5 @@
-{"publishBranch":"adf_publish","enableGitComment":true}
+{
+  "integrationRuntime": {},
+  "version": "1.0",
+  "lastPublishTime": "2025-11-17T16:17:41.129311Z"
+}
