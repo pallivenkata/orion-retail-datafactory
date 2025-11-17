@@ -1,0 +1,9 @@
+{
+	"name": "adf-orion-retail360-dev",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e8760608-580b-478d-b95e-ba6b2d0e0884",
+		"tenantId": "d3156262-9b67-4751-a826-e7b9829bfc25"
+	}
+}
